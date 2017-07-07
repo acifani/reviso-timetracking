@@ -7,5 +7,5 @@ class Entry(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     customer = db.Column(db.String(64), nullable=False)
-    timestamp = db.Column(db.DateTime, nullable=False)
     hourly_rate = db.Column(db.Float, nullable=False)
+    length = db.Column(db.Integer, nullable=False)
