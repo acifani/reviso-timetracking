@@ -1,3 +1,5 @@
+import logging
+
 from flask import Flask
 from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
@@ -24,5 +26,10 @@ def create_app(config_name):
     api = Api(app)
     api.add_resource(EntryListAPI, '/api/v0.1/entries', endpoint='entries')
     api.add_resource(EntryAPI, '/api/v0.1/entries/<int:entry_id>', endpoint='entry')
+
+    # Setup logging
+    log_level = app.config['LOG_LEVEL'] or logging.INFO
+    handler = logging.StreamHandler().setLevel(log_level)
+    app.logger.addHandler(handler)
 
     return app
