@@ -15,12 +15,9 @@ entry_fields = {
 # Template for the reqparse function.
 # Validates the incoming parameters.
 entry_parser = reqparse.RequestParser()
-entry_parser.add_argument('customer', type=str, required=True,
-                          help="The customer name")
-entry_parser.add_argument('hourly_rate', type=float, required=True,
-                          help="The hourly rate billed to the customer")
-entry_parser.add_argument('length', type=int, required=True,
-                          help="Entry time length")
+entry_parser.add_argument('customer', type=str, required=True,)
+entry_parser.add_argument('hourly_rate', type=float, required=True)
+entry_parser.add_argument('length', type=int, required=True)
 
 
 class EntryAPI(Resource):
