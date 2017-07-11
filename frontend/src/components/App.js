@@ -1,14 +1,23 @@
-import React, { Component } from 'react';
-import FilterableEntryList from './FilterableEntryList';
+import React from 'react';
+import { Redirect, Route } from 'react-router-dom';
 
-class App extends Component {
-  render() {
-    return (
-        <div>
-          <FilterableEntryList entries={this.props.entries}/>
-        </div>
-    );
-  }
-}
+import Header from './Header';
+import New from '../containers/New';
+import Overview from '../containers/Overview';
+import Manage from '../containers/Manage';
+
+import './App.css';
+
+const App = ({ children }) => (
+    <div className="AppContainer ui main text container">
+      <Header />
+      {children}
+
+      <Redirect to="/new" push/>
+      <Route path="/new" component={New} />
+      <Route path="/overview" component={Overview} />
+      <Route path="/manage" component={Manage} />
+    </div>
+);
 
 export default App;
