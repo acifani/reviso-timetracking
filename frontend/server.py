@@ -1,7 +1,7 @@
 from flask import Flask, current_app
 
 # set the project root directory as the static folder, you can set others.
-app = Flask(__name__, static_url_path='', static_folder='public')
+app = Flask(__name__, static_url_path='', static_folder='build')
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
