@@ -4,12 +4,10 @@ import { Table } from 'semantic-ui-react';
 import EntryRow from './EntryRow';
 
 const EntryList = ({ entries, filterText }) => {
-  let rows = [];
-  entries.forEach((entry) => {
-    if (entry.customer.indexOf(filterText) !== -1) {
-      rows.push(<EntryRow entry={entry} key={entry.id}/>);
-    }
-  });
+  let rows = entries
+    .filter(entry => entry.customer.includes(filterText))
+    .map(entry => <EntryRow entry={entry} key={entry.id} />);
+  
   return (
       <Table celled>
         <Table.Header>
