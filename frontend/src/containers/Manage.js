@@ -1,17 +1,30 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import { getAllEntries } from '../actions';
 import FilterableEntryList from '../components/FilterableEntryList';
 
-const ENTRIES = [
-  {id: 1, customer: 'customer1', hourly_rate: 10, length: 60},
-  {id: 2, customer: 'customer2', hourly_rate: 15, length: 120},
-  {id: 3, customer: 'customer3', hourly_rate: 10, length: 30},
-];
+class Manage extends React.Component {
+  componentWillMount() {
+    this.props.fetchEntries();
+  }
 
-const Manage = () => (
-    <div>
-      <h1>Manage</h1>
-      <FilterableEntryList entries={ENTRIES}/>
-    </div>
-);
+  render() {
+    return (
+        <div>
+          <h1>Manage</h1>
+          <FilterableEntryList entries={this.props.entries}/>
+        </div>
+    );
+  }
+}
 
-export default Manage;
+const mapStateToProps = (state) => ({
+  entries: state.entry.entries
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchEntries: () => dispatch(getAllEntries())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Manage);

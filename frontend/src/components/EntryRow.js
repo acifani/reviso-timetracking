@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Icon, Table} from 'semantic-ui-react';
+import { Button, Icon, Table } from 'semantic-ui-react';
 
 const EntryRow = ({ entry }) => (
     <Table.Row>
