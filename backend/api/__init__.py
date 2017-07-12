@@ -1,6 +1,7 @@
 import logging
 
 from flask import Flask
+from flask_cors import CORS, cross_origin
 from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
 
@@ -20,6 +21,7 @@ def create_app(config_name):
     app.config.from_object(app_config[config_name])
 
     db.init_app(app)
+    CORS(app)
 
     # Register Flask-Restful APIs
     from api.resources.entry import EntryAPI, EntryListAPI
