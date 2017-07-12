@@ -1,4 +1,4 @@
-const entry = (state = {
+const entries = (state = {
   entries: [],
   fetching: false,
   fetched: false,
@@ -32,4 +32,4 @@ const entry = (state = {
   }
 };
 
-export default entry;
+export default entries;

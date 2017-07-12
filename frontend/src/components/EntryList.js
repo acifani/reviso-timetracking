@@ -5,9 +5,9 @@ import EntryRow from './EntryRow';
 
 const EntryList = ({ entries, filterText }) => {
   let rows = entries
-    .filter(entry => entry.customer.includes(filterText))
+    .filter(entry => entry.customer.toLowerCase().includes(filterText.toLowerCase()))
     .map(entry => <EntryRow entry={entry} key={entry.id} />);
-  
+
   return (
       <Table celled>
         <Table.Header>

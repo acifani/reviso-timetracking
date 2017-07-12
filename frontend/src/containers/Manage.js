@@ -20,7 +20,7 @@ class Manage extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  entries: state.entry.entries
+  entries: state.entries.entries
 });
 
 const mapDispatchToProps = (dispatch) => ({
