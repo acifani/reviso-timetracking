@@ -11,7 +11,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   fetchEntries: () => dispatch(getAllEntries()),
   editEntry: (id, entry) => dispatch(editEntry(id, entry)),
-  deleteEntry: (id) => dispatch(deleteEntry(id)),
+  deleteEntry: id => dispatch(deleteEntry(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FilterableEntryList);

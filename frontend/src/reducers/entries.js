@@ -4,6 +4,8 @@ const entries = (state = {
   fetched: false,
   adding: false,
   added: false,
+  deleting: false,
+  deleted: false,
   error: null,
 }, action) => {
   switch (action.type) {
@@ -51,6 +53,28 @@ const entries = (state = {
         added: true,
         error: null,
         entries: [...entries, action.payload.data],
+      };
+    }
+    case 'DEL_ENTRY': {
+      return {
+        ...state,
+        deleting: true,
+      };
+    }
+    case 'DEL_ENTRY_REJECTED': {
+      return {
+        ...state,
+        deleting: false,
+        error: action.payload,
+      };
+    }
+    case 'DEL_ENTRY_SUCCESSFUL': {
+      return {
+        ...state,
+        deleting: false,
+        deleted: true,
+        error: null,
+        entries: state.entries.filter(entry => entry.id !== action.payload),
       };
     }
     default: {
