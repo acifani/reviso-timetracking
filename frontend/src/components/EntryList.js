@@ -3,11 +3,15 @@ import { Table } from 'semantic-ui-react';
 
 import EntryRow from './EntryRow';
 
-const EntryList = ({ entries, filterText }) => {
+const EntryList = ({ entries, filterText, editEntry, deleteEntry }) => {
   let rows = entries
-    .filter(entry => entry.customer.toLowerCase().includes(filterText.toLowerCase()))
-    .map(entry => <EntryRow entry={entry} key={entry.id} />);
-
+              .filter(entry => entry.customer.includes(filterText))
+              .map(entry => <EntryRow
+                      entry={entry}
+                      key={entry.id}
+                      editEntry={editEntry}
+                      deleteEntry={deleteEntry}
+                  />);
   return (
       <Table celled>
         <Table.Header>

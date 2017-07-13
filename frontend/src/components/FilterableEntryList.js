@@ -12,6 +12,10 @@ class FilterableEntryList extends React.Component {
         this.handleFilterTextInputChange.bind(this);
   }
 
+  componentWillMount() {
+    this.props.fetchEntries();
+  }
+
   handleFilterTextInputChange(filterText) {
     this.setState({
       filterText: filterText,
@@ -21,6 +25,7 @@ class FilterableEntryList extends React.Component {
   render() {
     return (
         <div>
+          <h1>Manage</h1>
           <SearchBar
               filterText={this.state.filterText}
               onFilterTextInput={this.handleFilterTextInputChange}
@@ -28,6 +33,8 @@ class FilterableEntryList extends React.Component {
           <EntryList
               entries={this.props.entries}
               filterText={this.state.filterText}
+              editEntry={this.props.editEntry}
+              deleteEntry={this.props.deleteEntry}
           />
         </div>
     );
