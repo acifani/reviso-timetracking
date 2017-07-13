@@ -45,7 +45,7 @@ class NewEntryForm extends React.Component {
                   onChange={this.handleOnChange}
               />
               <Form.Input
-                  label='Length'
+                  label='Length in minutes'
                   placeholder='mm'
                   name='length'
                   onChange={this.handleOnChange}
