@@ -9,7 +9,7 @@ const entries = (state = {
   error: null,
 }, action) => {
   switch (action.type) {
-    case 'FETCH_ENTRIES': {
+    case 'FETCH_ENTRIES_PENDING': {
       return {
         ...state,
         fetching: true,
@@ -32,7 +32,7 @@ const entries = (state = {
         entries: action.payload.data,
       };
     }
-    case 'ADD_ENTRY': {
+    case 'ADD_ENTRY_PENDING': {
       return {
         ...state,
         adding: true,
@@ -55,7 +55,7 @@ const entries = (state = {
         entries: [...entries, action.payload.data],
       };
     }
-    case 'DEL_ENTRY': {
+    case 'DEL_ENTRY_PENDING': {
       return {
         ...state,
         deleting: true,

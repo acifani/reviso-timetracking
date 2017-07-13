@@ -13,7 +13,7 @@ export const addEntry = entry => ({
 });
 
 export const deleteEntry = id => dispatch => {
-  dispatch({ type: 'DEL_ENTRY' });
+  dispatch({ type: 'DEL_ENTRY_PENDING' });
   return axios.delete(BASE_URL + 'entries/' + id)
     .then(() => dispatch({ type: 'DEL_ENTRY_SUCCESSFUL', payload: id }))
     .catch(error => dispatch({ type: 'DEL_ENTRY_REJECTED', payload: error }));
