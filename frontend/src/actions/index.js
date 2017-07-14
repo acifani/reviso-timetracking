@@ -21,7 +21,7 @@ export const deleteEntry = id => dispatch => {
 
 export const editEntry = (id, entry) => ({
   type: 'EDIT_ENTRY',
-  payload: { id, entry },
+  payload: axios.put(BASE_URL + 'entries/' + id, entry),
 });
 
 export const fetchCustomerOptions = () => dispatch => {

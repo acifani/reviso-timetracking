@@ -32,9 +32,11 @@ class FilterableEntryList extends React.Component {
           />
           <EntryList
               entries={this.props.entries}
+              form={this.props.form}
               filterText={this.state.filterText}
               editEntry={this.props.editEntry}
               deleteEntry={this.props.deleteEntry}
+              updateFormField={this.props.updateFormField}
           />
         </div>
     );

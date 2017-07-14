@@ -77,6 +77,33 @@ const entries = (state = {
         entries: state.entries.filter(entry => entry.id !== action.payload),
       };
     }
+    case 'EDIT_ENTRY_PENDING': {
+      return {
+        ...state,
+        editing: true,
+      };
+    }
+    case 'EDIT_ENTRY_REJECTED': {
+      return {
+        ...state,
+        editing: false,
+        error: action.payload,
+      };
+    }
+    case 'EDIT_ENTRY_FULFILLED': {
+      return {
+        ...state,
+        editing: false,
+        edited: true,
+        error: false,
+        entries: state.entries.map(entry =>
+            entry.id === action.payload.data.id ? action.payload.data : entry
+        ),
+        // entries: state.entries.filter(
+        //     entry => entry.id !== action.payload.data.id)
+        //   .concat(action.payload.data),
+      };
+    }
     default: {
       return state;
     }
