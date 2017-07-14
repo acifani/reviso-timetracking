@@ -24,9 +24,10 @@ def create_app(config_name):
     CORS(app)
 
     # Register Flask-Restful APIs
-    from api.resources.entry import EntryAPI, EntryListAPI
+    from api.resources.entry import EntryAPI, EntryListAPI, EntryListOverviewAPI
     api = Api(app)
     api.add_resource(EntryListAPI, '/api/v0.1/entries', endpoint='entries')
+    api.add_resource(EntryListOverviewAPI, '/api/v0.1/entries/overview', endpoint='entries_overview')
     api.add_resource(EntryAPI, '/api/v0.1/entries/<int:entry_id>', endpoint='entry')
 
     # Setup logging

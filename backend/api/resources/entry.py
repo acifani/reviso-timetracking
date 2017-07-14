@@ -1,4 +1,5 @@
 from flask_restful import Resource, fields, marshal_with, reqparse
+from sqlalchemy import func, cast, Float
 
 from api import db
 from api.models import Entry
@@ -88,3 +89,29 @@ class EntryListAPI(Resource):
         db.session.add(entry)
         db.session.commit()
         return entry, 201
+
+summary_fields = {
+    'customer': fields.String,
+    'total_length': fields.Integer,
+    'total_due': fields.Float
+}
+
+class EntryListOverviewAPI(Resource):
+    """API definition for entries overview"""
+
+    @marshal_with(summary_fields)
+    def get(self):
+        """
+        For each customer compute the total minutes and total due as:
+        (length / 60) * hourly_rate
+
+        :return: Overview for each customer
+        """
+        results = db.session\
+            .query(Entry.customer.label('customer'),
+                   func.sum(Entry.length).label('total_length'),
+                   func.sum(cast(Entry.length * Entry.hourly_rate / 60 , Float)).label('total_due')) \
+            .group_by(Entry.customer).all()
+
+        # See http://docs.sqlalchemy.org/en/rel_1_0/orm/query.html#sqlalchemy.util.KeyedTuple
+        return [result._asdict() for result in results]

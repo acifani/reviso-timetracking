@@ -92,3 +92,12 @@ class EntryTestCase(unittest.TestCase):
     def test_delete_not_exist(self):
         rv = self.client.delete(BASE_URL + '/1')
         self.assertEqual(rv.status_code, 404)
+
+    def test_overview(self):
+        self.client.post(BASE_URL, data=GOOD_ENTRY)
+        rv = self.client.get(BASE_URL+'/overview')
+        json_rv = json.loads(rv.data.decode('utf-8'))
+        self.assertEqual(rv.status_code, 200)
+        self.assertEqual(json_rv[0]['customer'], GOOD_ENTRY['customer'])
+        self.assertEqual(json_rv[0]['total_length'], GOOD_ENTRY['length'])
+        self.assertEqual(json_rv[0]['total_due'], GOOD_ENTRY['hourly_rate'])
