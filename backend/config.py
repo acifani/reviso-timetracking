@@ -33,8 +33,13 @@ class ProductionConfig(Config):
                               'sqlite:///' + os.path.join(basedir, 'db.sqlite')
 
 
+class HerokuConfig(Config):
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
+
+
 app_config = {
     'development': DevelopmentConfig,
     'production': ProductionConfig,
-    'testing': TestingConfig
+    'testing': TestingConfig,
+    'heroku': HerokuConfig
 }
