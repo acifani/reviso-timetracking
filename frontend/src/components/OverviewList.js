@@ -9,7 +9,9 @@ class OverviewList extends React.Component {
   }
 
   render() {
-    let rows = this.props.overview.map(row => <OverviewRow row={row}/>);
+    let rows = this.props.overview.map(
+        row => <OverviewRow key={row.customer} row={row}/>
+    );
     return (
         <div>
           <h1>Overview</h1>
