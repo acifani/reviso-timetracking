@@ -1,4 +1,5 @@
 import React from 'react';
+import PropType from 'prop-types';
 import { Input } from 'semantic-ui-react';
 
 class SearchBar extends React.Component {
@@ -25,5 +26,10 @@ class SearchBar extends React.Component {
     );
   }
 }
+
+SearchBar.propTypes = {
+  onFilterTextInput: PropType.func.isRequired,
+  filterText: PropType.string,
+};
 
 export default SearchBar;
