@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Button, Form, Table } from 'semantic-ui-react';
 
 class EntryRow extends React.Component {
@@ -80,5 +81,21 @@ class EntryRow extends React.Component {
     return this.showOrEdit();
   }
 }
+
+EntryRow.propTypes = {
+  entry: PropTypes.shape({
+    customer: PropTypes.string,
+    hourly_rate: PropTypes.number,
+    length: PropTypes.number,
+  }),
+  form: PropTypes.shape({
+    customer: PropTypes.string,
+    hourly_rate: PropTypes.number,
+    length: PropTypes.number,
+  }),
+  editEntry: PropTypes.func,
+  deleteEntry: PropTypes.func,
+  updateFormField: PropTypes.func,
+};
 
 export default EntryRow;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Table } from 'semantic-ui-react';
 
 import EntryRow from './EntryRow';
@@ -29,5 +30,15 @@ const EntryList = ({ entries, form, filterText,
       </Table>
   );
 };
+
+EntryList.propTypes = {
+  entries: PropTypes.array,
+  form: PropTypes.object,
+  filterText: PropTypes.string,
+  editEntry: PropTypes.func,
+  deleteEntry: PropTypes.func,
+  updateFormField: PropTypes.func,
+};
+
 
 export default EntryList;

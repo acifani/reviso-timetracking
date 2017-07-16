@@ -1,15 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Table } from 'semantic-ui-react';
 
 import OverviewRow from './OverviewRow';
 
 class OverviewList extends React.Component {
   componentWillMount() {
-    this.props.getOverview();
+    this.props.getOverviews();
   }
 
   render() {
-    let rows = this.props.overview.map(
+    let rows = this.props.overviews.map(
         row => <OverviewRow key={row.customer} row={row}/>
     );
     return (
@@ -31,5 +32,10 @@ class OverviewList extends React.Component {
     );
   }
 }
+
+OverviewList.propTypes = {
+  getOverviews: PropTypes.func.isRequired,
+  overviews: PropTypes.array,
+};
 
 export default OverviewList;

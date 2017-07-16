@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Table } from 'semantic-ui-react';
 
 const OverviewRow = ({ row }) => (
@@ -8,5 +9,13 @@ const OverviewRow = ({ row }) => (
       <Table.Cell>{row.total_due.toFixed(2)}</Table.Cell>
     </Table.Row>
 );
+
+OverviewRow.propTYpes = {
+  row: PropTypes.shape({
+    customer: PropTypes.string,
+    total_length: PropTypes.number,
+    total_due: PropTypes.number,
+  }),
+};
 
 export default OverviewRow;

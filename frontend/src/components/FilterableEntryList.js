@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import EntryList from './EntryList';
 import SearchBar from './SearchBar';
 
@@ -42,5 +44,15 @@ class FilterableEntryList extends React.Component {
     );
   }
 }
+
+FilterableEntryList.propTypes = {
+  fetchEntries: PropTypes.func.isRequired,
+  entries: PropTypes.array,
+  form: PropTypes.object,
+  filterText: PropTypes.string,
+  editEntry: PropTypes.func,
+  deleteEntry: PropTypes.func,
+  updateFormField: PropTypes.func,
+};
 
 export default FilterableEntryList;

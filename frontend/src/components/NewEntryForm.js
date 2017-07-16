@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Form, Message } from 'semantic-ui-react';
 
 class NewEntryForm extends React.Component {
@@ -51,12 +52,6 @@ class NewEntryForm extends React.Component {
                   onChange={this.handleOnChange}
               />
             </Form.Group>
-            {/*<Form.Group inline>*/}
-            {/*<label>Length</label>*/}
-            {/*<Form.Input placeholder='hh' width={2}/>*/}
-            {/*<Form.Input placeholder='mm' width={2}/>*/}
-            {/*<Form.Input placeholder='ss' width={2}/>*/}
-            {/*</Form.Group>*/}
             <Form.Button>Submit</Form.Button>
             <Message
                 success
@@ -73,5 +68,13 @@ class NewEntryForm extends React.Component {
     );
   };
 }
+
+NewEntryForm.propTypes = {
+  form: PropTypes.object,
+  fetchCustomerOptions: PropTypes.func.isRequired,
+  updateFormField: PropTypes.func,
+  addEntry: PropTypes.func,
+  formStatus: PropTypes.object,
+};
 
 export default NewEntryForm;

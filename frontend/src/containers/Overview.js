@@ -2,14 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import OverviewList from '../components/OverviewList';
-import { getOverview } from '../actions';
+import { getOverviews } from '../actions';
 
 const mapStateToProps = state => ({
-  overview: state.overview.overview,
+  overviews: state.overview.overviews,
 });
 
 const mapDispatchToProps = dispatch => ({
-  getOverview: () => dispatch(getOverview())
+  getOverviews: () => dispatch(getOverviews())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(OverviewList);

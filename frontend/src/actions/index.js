@@ -37,7 +37,7 @@ export const updateFormField = (name, value) => ({
   payload: { name, value },
 });
 
-export const getOverview = () => ({
+export const getOverviews = () => ({
   type: 'FETCH_OVERVIEW',
   payload: axios.get(BASE_URL + 'entries/overview')
 });

@@ -1,5 +1,5 @@
 const overview = (state = {
-  overview: [],
+  overviews: [],
   fetching: false,
   fetched: false,
   error: null,
@@ -24,7 +24,7 @@ const overview = (state = {
         fetching: false,
         fetched: true,
         error: null,
-        overview: action.payload.data,
+        overviews: action.payload.data,
       };
     }
     default: {
