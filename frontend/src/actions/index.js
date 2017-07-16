@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://212.237.1.146:8889/api/v0.1/';
+// const BASE_URL = 'http://212.237.1.146:8889/api/v0.1/';
+const BASE_URL = 'http://reviso-timetracking-server.herokuapp.com/api/v0.1/';
 
 export const getAllEntries = () => ({
   type: 'FETCH_ENTRIES',
