@@ -52,7 +52,7 @@ const entries = (state = {
         adding: false,
         added: true,
         error: null,
-        entries: [...entries, action.payload.data],
+        entries: [...state.entries, action.payload.data],
       };
     }
     case 'DEL_ENTRY_PENDING': {
@@ -65,10 +65,11 @@ const entries = (state = {
       return {
         ...state,
         deleting: false,
+        deleted: false,
         error: action.payload,
       };
     }
-    case 'DEL_ENTRY_SUCCESSFUL': {
+    case 'DEL_ENTRY_FULFILLED': {
       return {
         ...state,
         deleting: false,
@@ -87,6 +88,7 @@ const entries = (state = {
       return {
         ...state,
         editing: false,
+        edited: false,
         error: action.payload,
       };
     }
@@ -95,13 +97,10 @@ const entries = (state = {
         ...state,
         editing: false,
         edited: true,
-        error: false,
+        error: null,
         entries: state.entries.map(entry =>
             entry.id === action.payload.data.id ? action.payload.data : entry
         ),
-        // entries: state.entries.filter(
-        //     entry => entry.id !== action.payload.data.id)
-        //   .concat(action.payload.data),
       };
     }
     default: {

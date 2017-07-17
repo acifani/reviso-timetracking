@@ -8,7 +8,7 @@ const form = (state = {
   error: null,
 }, action) => {
   switch (action.type) {
-    case 'FETCH_CUSTOMER_OPTIONS': {
+    case 'FETCH_CUSTOMER_OPTIONS_PENDING': {
       return {
         ...state,
         fetching: true,
