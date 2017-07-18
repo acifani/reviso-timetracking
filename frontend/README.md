@@ -1,3 +1,39 @@
+# Reviso Timetracking web client
+
+## How to run
+
+### Prerequisites
+
+* Node >= 6
+
+### Setup
+```
+$ cd frontend
+$ npm install
+```
+
+### Run
+
+#### Development 
+Serves a development copy of the app that reloads on code change.
+```
+$ npm start
+```
+#### Production build
+Creates a production-optimized build in `build`.
+```
+$ npm run build
+```
+#### Test
+Run tests with `jest`.
+```
+$ npm test
+```
+
+Below the origin README that comes with `create-react-app`.
+
+___
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
